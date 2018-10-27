@@ -1,0 +1,16 @@
+[Unit]
+Description=CubeREST Server
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/CubeREST/
+ExecStart=/bin/bash -lc 'bundle exec rackup -o 0.0.0.0 > /dev/null 2>&1'
+Restart=always
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+KillMode=mixed
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

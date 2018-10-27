@@ -1,0 +1,14 @@
+upstream cuberest {
+  server 127.0.0.1:9292;
+}
+
+server {
+  listen 80 default_server;
+  location / {
+    try_files $uri @cuberest;
+  }
+
+  location @cuberest {
+    proxy_pass http://cuberest;
+  }
+}
